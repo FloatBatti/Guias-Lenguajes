@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "./SistemaHospital/Models",
+        "./SistemaHospital"
+    ],
+    "python.analysis.typeCheckingMode": "basic"
+}

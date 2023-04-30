@@ -1,0 +1,3 @@
+Hola, soy un archivo [0]
+Estoy programando en Python [1]
+Gracias por no borrarme [2]

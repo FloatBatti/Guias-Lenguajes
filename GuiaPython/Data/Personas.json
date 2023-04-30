@@ -1,0 +1,44 @@
+[
+    {
+        "_nombre" : "Cosme Fulanito", 
+        "_dni" : "12345678", 
+        "_telefono" : "2237654321", 
+        "_mail" : "mailfake@gmail.com", 
+        "_obraSocial" : "00000789", 
+        "_turno" : {
+            "_fecha" : "17/10/2022", 
+            "_doctor" : {
+                "_nombre" : "Pablo", 
+                "_dni" : "87654321", 
+                "_telefono" : "2239874154", 
+                "_mail" : "thebestdoctor@gmail.com", 
+                "_especializacion" : "Clinico"
+            }, 
+            "_consultorio" : {
+                "_numero" : 1, 
+                "_estado" : true
+            }
+        }
+    }, 
+    {
+        "_nombre" : "Cosme Fulanito", 
+        "_dni" : "12345678", 
+        "_telefono" : "2237654321", 
+        "_mail" : "mailfake@gmail.com", 
+        "_obraSocial" : "00000789", 
+        "_turno" : {
+            "_fecha" : "17/10/2022", 
+            "_doctor" : {
+                "_nombre" : "Pablo", 
+                "_dni" : "87654321", 
+                "_telefono" : "2239874154", 
+                "_mail" : "thebestdoctor@gmail.com", 
+                "_especializacion" : "Clinico"
+            }, 
+            "_consultorio" : {
+                "_numero" : 1, 
+                "_estado" : true
+            }
+        }
+    }
+]
