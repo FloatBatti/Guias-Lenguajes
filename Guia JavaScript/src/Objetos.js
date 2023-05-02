@@ -30,11 +30,22 @@ const objeto = {
 
     saludar: function() { 
         console.log(`Hola soy ${this.nombre}`); 
+    },
+
+    get nombreCompleto() { // Se crea un getter para obtener el nombre completo del objeto.
+        return `${this.nombre} ${this.apellido}`;
+    },
+
+    set nombreCompleto(nombreCompleto) { // Se crea un setter para modificar el nombre completo del objeto.
+        const nombreYApellido = nombreCompleto.split(" ");
+        this.nombre = nombreYApellido[0];
+        this.apellido = nombreYApellido[1];
     }
 };
 
 console.log(objeto); // Imprime el objeto completo.
 console.log(objeto.nombre); // Imprime "Lucas".
+console.log(objeto["apellido"]); // Se puede acceder a los atributos con corchetes.
 
 objeto.saludar(); // Imprime "Hola soy Lucas".
 console.log(`El precio total de todos los items es: ${objeto.total()}`); // Imprime 90.
@@ -43,6 +54,12 @@ objeto.nombre = "Agustin"; // Modifica el valor del atributo nombre.
 objeto.mascota.nombre = "Scooby"; // Modifica el valor del atributo nombre del objeto mascota.
 
 const objeto2 = objeto; // Se crea una nueva variable que apunta al mismo objeto que objeto.
+
+console.log(objeto.nombreCompleto); // Se llama al getter nombreCompleto.
+
+objeto.nombreCompleto = "Juan Perez"; // Se llama al setter nombreCompleto y se le pasa el nombre completo.
+
+console.log(objeto.nombreCompleto); // Imprime "Juan Perez".
 
 console.log(objeto == objeto2); // Compara en función de su referencia en memoria. Imprime true.
 console.log(objeto === objeto2); // Compara función de su contenido y tipo de dato. Imprime true.
@@ -77,10 +94,44 @@ const user = {
     email: "admin@gmail.com"
 }
 
-const detallar = ({username, email}) => { // Se crea una función que recibe la desestructuración del objeto.
+const detallar = ({username, email}) => { // Se crea una función que recibe un objeto y se desestructuro.
 
     console.log(`El usuario ${username} tiene el email ${email}`);
 
 }
 
 detallar(user); 
+
+let auto = new Object(); // Se reserva espacio en memoria para un objeto de manera explícita.
+
+auto.marca = "Ford"; // Se crea el atributo marca y se le asigna el valor "Ford".
+auto.modelo = "Focus"; 
+
+// Recorrer las propiedades/atributos de un objeto:
+
+for(let atributo in auto) {
+
+    console.log("Nombre del atributo: " + atributo);
+    console.log("Valor del atributo: " + auto[atributo]); 
+}
+
+auto.edad = 5; 
+
+delete auto.edad; // Se elimina el atributo edad del objeto auto.
+
+let autoArray = Object.values(auto); // Se crea un arreglo con los valores del objeto auto.
+
+console.log(autoArray); // Imprime ["Ford", "Focus"].
+
+// Se crea una función constructora de objetos. Se utiliza la palabra reservada this para referirse al objeto que se 
+// está creando.
+function Persona(nombre, apellido, edad) {
+
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.edad = edad;
+}
+
+const persona1 = new Persona("Lucas", "Garcia", 20); // Se crea un objeto persona1 con la función constructora.
+
+console.log(persona1); // Imprime el objeto persona1.

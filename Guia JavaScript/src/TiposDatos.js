@@ -17,9 +17,26 @@ let boolean = true; // Tipo de dato booleano
 
 console.log(boolean); // Imprime "true"
 
-let simbolo = Symbol("mi simbolo");
+// Tipo de dato Symbol. Es un tipo de dato primitivo que se utiliza para generar valores únicos.
+// El .for es para generar un símbolo que sea único en todo el programa. Si se genera un símbolo con el mismo nombre,
+// se obtiene el mismo símbolo. Se recomienda usar .for paracrear un símbolo a partir de una cadena de texto,
 
-console.log(simbolo); // Imprime "Symbol(mi simbolo)"
+let simbolo1 = Symbol("Soy un simbolo");
+let simbolo2 = Symbol.for("Soy otro simbolo");
+let simbolo3 = Symbol.for("Soy otro simbolo");
+
+console.log(simbolo1); // Imprime "Symbol(simbolo)"
+console.log(simbolo2); 
+console.log(typeof simbolo1); // Imprime "symbol"
+
+Symbol("Soy un simbolo") === Symbol("Soy un simbolo"); // Devuelve false. Cada símbolo es único.
+simbolo2 === simbolo3; // Devuelve true. Se obtiene el mismo símbolo porque se uso el método .for.
+
+// El método .keyFor devuelve la descripción de un sybol global hecho con .for. Si se le pasa un símbolo que no fue creado
+// con .for, devuelve undefined. El método .description devuelve la descripción de un symbol sin importar si fue creado con
+// .for o no.
+console.log(simbolo1.description); // Imprime "Soy un simbolo". Devuelve la descripcion del lsímbolo.
+console.log(Symbol.keyFor(simbolo2)); // Imprime "Soy otro simbolo". Devuelve la descripcion del símbolo.
 
 // Tipo de dato undefined. Es un tipo de dato especial que indica que una variable no tiene valor 
 // asignado.
@@ -38,30 +55,6 @@ let esperandoDato = undefined;
 let y = null;
 console.log(y); // Imprime "null"
 console.log(typeof y); // Imprime "object". Se considera un error de diseño de lenguaje.
-
-// ------------------------------------------------------------------------------------------------------------------
-
-// Tipo de dato function. Las funciones son un tipo de dato especial en JavaScript. 
-// Se pueden asignar a variables y pasarlas como parámetros a otras funciones.
-
-function miFuncion() { console.log("Hola"); }
-
-miFuncion(); // Imprime "Hola"
-
-// Existen también las funciones anónimas, que no tienen nombre. Se asignan a variables.
-// Se utilizan para pasarlas como parámetros a otras funciones.
-
-const miFuncion2 = function() { console.log("Hola de forma anónima"); }
-
-// También se pueden definir funciones anónimas utilizando arrow functions, utilizando expresiones lambda.
-const miFuncion3 = () => console.log("Hola de forma anónima con arrow function");
-
-// Arrow function con parámetros. Devuelve la suma de los parámetros. Se pueden dar valores por defecto a los parámetros.
-const add = (a = 0, b = 0) => a + b; 
-
-console.log(add(2, 3)); // Imprime 5
-
-// Tipo de dato Symbol. Es un tipo de dato primitivo que se utiliza para generar valores únicos.
 
 // ------------------------------------------------------------------------------------------------------------------
 
