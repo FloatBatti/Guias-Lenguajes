@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <title>Guia JavaScript</title>
+  </head>
+  <body>
+
+    <!-- Todos los elementos del DOM son objetos, teniendo atributos y métodos -->
+
+    <h1 id="cabecera" class="rojo">Ejemplo DOM con JavaScript</h1>
+    <p id="parrafo1" class="rojo">Saludos!</p>
+    <p id="parrafo2">Otro parrafo</p>
+
+    <button onclick="cambiarColor()">Color Párrafo</button>
+
+    <form id="formulario">
+
+      Nombre: <input type="text" name="nombre" value="Juan">
+      <br/>
+      Apellido: <input type="text" name="apellido" value="Perez">
+      <br/>
+    </form>
+
+    <!-- Con los () se manda a llamar una función de JavaScript -->
+    <button onclick="mostrarValores()">Mostrar Valores</button>
+
+    <div id="valoresForm"></div>
+
+    <img id="imagen" src="http://globalmentoring.com.mx/imagenes/javascript.png"> 
+
+    <button onclick="cambiarFoto()">Cambiar Imagen</button>
+
+    <script>
+    
+      // document es un objeto que representa el documento HTML.
+      // getElementById() devuelve un elemento HTML con el valor del atributo id.
+      // Con innerHTML se puede acceder al contenido de un elemento HTML.
+      // Si no utilizamos innerHTML, se accede al objeto HTML completo.
+      let cabecera = document.getElementById("cabecera").innerHTML;
+
+      // Se guarda el objeto HTML en la variable cabecera, no el valor del elemento.
+      let parrafo = document.getElementById("parrafo1");
+
+      // Se le asigna un nuevo valor al elemento HTML. Para esto se debe obtener el objeto y no el valor del elemento.
+      parrafo.innerHTML = "Hola Mundo!";
+
+      // getElementsByTagName() devuelve una lista de elementos HTML con el nombre de la etiqueta.
+      let parrafos = document.getElementsByTagName("p");
+
+      console.log("Hay " + parrafos.length + " parrafos");
+
+      parrafos[1].innerHTML = "Otro parrafo modificado";
+
+      // getElementsByClassName() devuelve una lista de elementos HTML con el nombre de la clase.
+      let elementosRojos = document.getElementsByClassName("rojo");
+
+      console.log("Hay " + elementosRojos.length + " elementos rojos");
+
+      // querySelector() devuelve el primer elemento HTML que coincida con el selector.
+      // Se pone el elemento HTML que se quiere obtener, seguido de un punto y el nombre del selector.
+      let parrafosRojos = document.querySelectorAll("p.rojo");
+
+      console.log("Hay " + parrafosRojos.length + " parrafos rojos");
+
+      function mostrarValores() {
+
+          // Con document.forms se obtiene el formulario del documento (indicado por su id) en forma de array.
+          let formulario = document.forms["formulario"];
+          let texto = "";
+
+          // No utilizo console.log() porque solo se mostraria en la consola del navegador.
+
+          for(let campo of formulario) {
+              texto += campo.value + "<br/>";
+          }
+
+          document.getElementById("valoresForm").innerHTML = texto;
+          
+          // Se puede acceder a los elementos del formulario por su nombre.
+          let nombre = formulario["nombre"].value;
+          let apellido = formulario["apellido"].value;
+          // Si no se pone el value, se obtiene el objeto HTML de tipo input.
+      }
+
+      function cambiarFoto() {
+
+          // Se obtiene el objeto HTML de tipo imagen.
+          let imagen = document.getElementById("imagen");
+          let linkJS = "http://globalmentoring.com.mx/imagenes/javascript.png";
+          let linkHTML = "http://globalmentoring.com.mx/imagenes/html5.png";
+
+          // Se cambia el valor del atributo src de la imagen.
+          imagen.src == linkHTML ? imagen.src = linkJS: imagen.src = linkHTML;
+
+      }
+
+      function cambiarColor() {
+
+          let parrafo2 = document.getElementById("parrafo2");
+
+          // Se cambia el style del elemento HTML.
+          parrafo2.style.color == "red" ? parrafo2.style.color = "blue" : parrafo2.style.color= "red";
+
+      }
+
+      document.write("<br/> Mensaje directo desde JavaScript");
+
+
+    </script>
+
+    <br/>
+    <a href="otraPag.html" target="_blank">Otra página</a>
+
+    <!-- DESCONMENTAR PARA PROBAR LOS ARCHIVOS JS -->
+    <!-- <script type="module" src="/src/TypeScript/ClasesObjetos.ts"></script> -->
+
+    <!-- Los scripts deben ir abajo de los elementos HTML para poder utilizarlos -->
+
+  </body>
+</html>

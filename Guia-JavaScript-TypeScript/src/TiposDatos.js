@@ -58,22 +58,6 @@ console.log(typeof y); // Imprime "object". Se considera un error de diseño de 
 
 // ------------------------------------------------------------------------------------------------------------------
 
-// Tipo de dato clase. Es un tipo de dato especial que se utiliza para generar objetos.
-// El tipo de dato clase es una función.
-
-class Persona {
-    constructor(nombre, edad) {
-        this.nombre = nombre;
-        this.edad = edad;
-    }
-}
-
-let agustin = new Persona("Agustin", 27); // Instancia de la clase Persona.
-
-console.log(agustin); // Imprime el objeto completo.
-
-// ------------------------------------------------------------------------------------------------------------------
-
 let z = '';
 console.log(z); // El valor de una variable string vacía es ""
 

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/style.css" rel="stylesheet">
+    </head>
+    <!-- onload es un evento que se ejecuta cuando se carga la página web. Es un evento que sucede mientras carga -->
+    <body onload="entrar()">
+
+        <!--- this hace referencia al objeto HMTL de tipo h1, es decir, una referencia a si mismo-->
+        <!--- onmouseover es un evento que se ejecuta cuando el mouse pasa por encima del elemento-->
+        <!--- onmouseout es un evento que se ejecuta cuando el mouse sale del elemento-->
+        <h1 onclick="cambiarTitulo(this)" onmouseover="rojo(this)" onmouseout="azul(this)">Bienvenido a la otra página</h1>
+
+        <br>
+
+        <p id="parrafo">Esta es la otra página</p>
+
+        <br/>
+
+        <!--- onmousedown es un evento que se ejecuta cuando se presiona el botón del mouse-->
+        <!--- onmouseup es un evento que se ejecuta cuando se suelta el botón del mouse-->
+        <div id="cookies" onmousedown="azul(this)" onmouseup="rojo(this)" ></div>
+        <br/>
+
+        <!-- Con onchange se monitorea el evento de cambio en el elemento. Si hay cambio ejecuta la función -->
+        <!-- Con onfocus se monitorea el evento de enfoque en el elemento. Si hay enfoque ejecuta la función -->
+        <!-- Con onblur se monitorea el evento de desenfoque en el elemento. Si hay desenfoque ejecuta la función -->
+        Comida favorita: <input type="text" id="comida" onchange="convertir(this)" onfocus="cambiar(this)" onblur="regresar(this)">
+        <br/>
+        Pelicula favorita: <input type="text" id="pelicula">
+        <br/><br/>
+        <form id="formulario">
+            Palabra al azar: <input type="text" id="palabra">
+            <br/>
+            Numero al azar: <input type="number" id="numero">
+        </form>
+    </body>
+
+    <script>
+
+        function cambiarTitulo(elemento){
+            elemento.innerHTML = "Bienvenido!";
+        }
+
+        // Se puede llamar al método onclick de un elemento HTML desde JavaScript, sin necesidad de hacerlo desde el HTML.
+        document.getElementById("parrafo").onclick = function(){
+
+            // alert() es una función de JavaScript que muestra una ventana emergente con un mensaje.
+            alert("Hola!");
+        }
+
+        function entrar(){
+
+            alert("Has entrado a la otra página!");
+            let texto= "";
+
+            // navigator es un objeto que representa al navegador web.
+            // cookieEnabled es un atributo que devuelve true si las cookies están habilitadas.
+            if(navigator.cookieEnabled){
+
+                texto = "Las cookies están habilitadas";
+            }
+            else{
+
+                texto = "Las cookies están deshabilitadas";
+            }
+
+            document.getElementById("cookies").innerHTML = texto;
+        }
+
+        function convertir(elemento){
+
+            elemento.value = elemento.value.toUpperCase();
+        }
+
+        function rojo(elemento){
+
+            elemento.style.color = "red";
+        }
+
+        function azul(elemento){
+
+            elemento.style.color = "blue";
+        }
+
+        function cambiar(elementoInput){
+
+            elementoInput.style.background = "yellow";
+        }
+
+        function regresar(elementoInput){
+
+            elementoInput.style.background = "white";
+        }
+
+        // addEventListener() es un método que permite agregar un evento a un elemento HTML.
+        // Se le indica el nombre del evento y la función que se ejecutará cuando suceda el evento.
+        // Se debe sacar el prefijo "on" del nombre del evento. Por ejemplo, si es un evento onclick, se debe poner "click".
+        document.getElementById("pelicula").addEventListener("focus", function(evento){
+
+            // target es un atributo que hace referencia al objeto HTML que disparó el evento.
+            evento.target.style.background = "blue";;
+        });
+
+        document.getElementById("pelicula").addEventListener("blur", (evento)=>{evento.target.style.background = "white";});
+
+        document.getElementById("pelicula").addEventListener("change", (evento)=>{
+            
+            evento.target.value = evento.target.value.toUpperCase();        
+        });
+
+        // En el siguiente se aplican eventos a todos los elementos del formulario.
+        const formulario = document.getElementById("formulario");
+
+        formulario.addEventListener("focus", (evento)=>{
+
+            evento.target.style.background = "pink";
+        }, true); // true hace que el evento se ejecute en los elementos hijos del formulario.
+
+        formulario.addEventListener("blur", (evento)=>{
+
+            evento.target.style.background = "white";
+        }, true);
+
+    </script>
+</html>
