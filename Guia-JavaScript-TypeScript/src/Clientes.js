@@ -38,6 +38,7 @@ export const clientes = [
   ];
 
   // Con export default se exporta por defecto la variable, función, clase, etc. que se está exportando.
+  // Se importó en el archivo Guia-JavaScript-TypeScript\src\MapFilterFind.js
   export default (clientes) =>{
 
     return clientes.map((cliente) => {

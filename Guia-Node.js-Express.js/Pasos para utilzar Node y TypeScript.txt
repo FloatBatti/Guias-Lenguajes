@@ -1,0 +1,105 @@
+El primer paso es inicializar nuestro proyecto node con npm init -y, esto nos creará un archivo package.json con 
+la configuración por defecto.
+
+Estructura del archivo package.json:
+
+"name": El nombre del proyecto.
+"version": La versión actual del proyecto.
+"description": Una descripción breve del proyecto.
+"main": El archivo principal que se ejecutará cuando el proyecto sea requerido o importado.
+"scripts": Un objeto que contiene una lista de comandos de consola que se pueden ejecutar utilizando npm run 
+<comando>.
+"start": Ejecuta el archivo app.ts que se encuentra en la carpeta dist utilizando el comando node.
+"dev": Ejecuta el archivo app.ts que se encuentra en la carpeta src utilizando el comando nodemon. nodemon es una 
+herramienta que reinicia automáticamente el servidor cuando hay cambios en el código fuente.
+"build": Ejecuta el compilador de TypeScript (tsc) con la configuración presente en el archivo tsconfig.json. tsc 
+compila los archivos de TypeScript a JavaScript y los coloca en la carpeta dist.
+"tsc": Transforma los archivos de TypeScript a JavaScript.
+"keywords": Una lista de palabras clave que ayudan a los usuarios a encontrar el proyecto.
+"author": El nombre del autor del proyecto.
+"license": La licencia bajo la cual se distribuye el proyecto. En este caso, la licencia es ISC.
+
+La parte de los scripts quedaria de la siguiente manera:
+
+  "scripts": {
+    "start": "node dist/app.ts",
+    "dev": "nodemon src/app.ts",
+    "build": "tsc -p .",
+    "tsc": "tsc"
+  },
+
+----------------------------------------------------------------------------------------------------
+
+Una vez que se ha configurado el archivo package.json, se procede a instalar las dependencias del proyecto. Para
+instalar las dependencias de producción, se debe ejecutar, por ejemplo, el siguiente comando:
+
+npm install class-validator cors dotenv express morgan mysql typeorm typeorm-naming-strategies typescript
+
+*class-validator: Permite generador validadores para las clases sobre su contenido a partir de decoradores.
+*cors: CORS es un mecanismo de seguridad utilizado por los navegadores web para limitar las solicitudes de recursos
+desde un dominio diferente al del servidor donde se encuentra el recurso. El paquete cors de Node.js es un 
+middleware que facilita la configuración de las cabeceras CORS en una aplicación web. El middleware permite que
+los servidores especifiquen qué orígenes (dominios) están autorizados para acceder a los recursos del servidor. Por
+ejemplo, cuando se tiene una app frontend que consume una API y no se configura CORS, el navegador bloqueará las
+peticiones a la API.
+*dotenv: Permite manejar variables de entorno.
+*express: Permite crear un servidor web (Framework de Node.js).
+*morgan: Se usa para para registrar solicitudes HTTP en el servidor. Es decir, es un registrador de solicitudes HTTP,
+que permite a los desarrolladores ver detalles sobre las solicitudes que llegan a su servidor, como el método HTTP, 
+la URL, los encabezados y el código de respuesta.
+*mysql: Permite conectarse a una base de datos MySQL.
+*typeorm: Permite conectarse a una base de datos y realizar consultas a la misma. Es un ORM (Object Relational
+Mapping) que permite mapear las tablas de la base de datos a clases de TypeScript.
+*typeorm-naming-strategies: Permite configurar el nombre de las tablas y columnas de la base de datos.
+*typescript: Permite escribir código JavaScript con tipado estático.
+
+Hay otro tipo de dependencias llamadas "dependencias de desarrollo", las cuales son dependencias que se usan
+únicamente en el proceso de desarrollo, pero no en el proceso de producción. Por ejemplo, el compilador de
+TypeScript (tsc) es una dependencia de desarrollo, ya que se usa para compilar el código TypeScript a JavaScript,
+pero una vez que el código se ha compilado, no se necesita más. Proceso de producción es cuando se sube el código
+a un servidor para que se ejecute. Los comandos son:
+
+npm install -D @types/cors @types/express @types/morgan concurrently nodemon
+
+*concurrently: Permite ejecutar varios comandos de consola al mismo tiempo.
+*nodemon: Permite reiniciar automáticamente el servidor cuando hay cambios en el código fuente.
+
+----------------------------------------------------------------------------------------------------
+
+Cuando instalemos lo anterior se creará una carpeta node_modules, la cual contiene todas las dependencias del
+proyecto. Esta carpeta no se debe subir al repositorio, ya que es muy pesada. Para evitar que se suba, se debe
+crear un archivo .gitignore y agregar la siguiente línea: node_modules.
+
+Los modulos son archivos de JavaScript que contienen código reutilizable. Para importar un módulo en TypeScript,
+se debe usar la palabra reservada import. Por ejemplo, para importar el módulo express, se debe escribir lo
+siguiente: import express from "express". La palabra reservada from indica de donde se va a importar el módulo.
+Tambien sirve para dividir el código en varios archivos, tener un mejor orden y mantenimiento, encontrar bugs,
+modificar código facilmente y agragar una nueva funcionalidad.
+Luego debemos crear una carpeta src, la cual contendrá el código fuente de la aplicación.
+
+----------------------------------------------------------------------------------------------------
+
+Para poder manejar typescript en el proyecto, se debe crear un archivo tsconfig.json, el cual contiene la
+configuración del compilador de TypeScript. Para crearlo, se debe ejecutar el comando tsc --init. Este comando
+creará un archivo tsconfig.json con la configuración por defecto. Luego se deben configurar los siguientes
+parámetros:
+
+"experimentalDecorators": true, (permite usar decoradores)
+"emitDecoratorMetadata": true, (permite usar decoradores)
+"rootDir": "./src", (indica donde se encuentran los archivos del proyecto)
+"outDir": "./dist", (indica donde se guardaran los archivos compilados, ya que se terminan compilando en JS)
+"moduleResolution": "node", (ignora por defecto la carpeta de node_modules)
+"esModuleInterop": true, (permite importar modulos de JS en TS)
+"strict": true,
+"strictPropertyInitialization": true, (muestra un error si una propiedad de una clase no se inicializa)
+"noUnusedLocals": true, (muestra un error si se declara una variable y no se usa)
+"noUnusedParameters": true, (muestra un error si se declara un parametro y no se usa)
+"noImplicitReturns": true, (muestra un error si una funcion no retorna nada)
+"noFallthroughCasesInSwitch": true, (muestra un error si no se pone un break en un switch)
+
+----------------------------------------------------------------------------------------------------
+
+
+
+
+

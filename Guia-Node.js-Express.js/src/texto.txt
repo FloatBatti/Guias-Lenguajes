@@ -1,0 +1,5 @@
+Hola
+desde
+un
+archivo
+.txt

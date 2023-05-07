@@ -1,4 +1,6 @@
-// En el import se le asigna un nombre a la variable que se está importando por defecto. Solo se puede una por archivo.
+// En el import se le asigna un nombre a la variable que se está importando por defecto. Solo se puede una por 
+// archivo. Con ./ se indica que el archivo se encuentra en la misma carpeta que el archivo que lo importa.
+// Entre los corchetes se indica el nombre de la variable que se está importando.
 import saludosClientes, { clientes } from "./Clientes.js";
 
 // Uso del método map:
