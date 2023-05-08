@@ -21,18 +21,19 @@ console.log(process.argv); // Muestra un arreglo con los argumentos que se le pa
 console.log(process.argv[2]); // Muestra el tercer argumento que se le pasa a nodejs por consola.
 */
 
-// Con el modulo fs se puede leer y escribir archivos. Los métodos son asincronos por defecto, es decir, no bloquean el hilo principal.
-// la ejecucion del programa.
-const fs = require("fs"); // Se importa el modulo fs.
+// Con el modulo fs se puede leer y escribir archivos. Los métodos son asincronos por defecto, es decir, no bloquean
+// el hilo principal del programa.
+import { readFile } from "fs"; // Se importa el modulo fs.
 
-// El primer parametro indica el archivo a aleer, el segundo parametro indica el formato de lectura y el tercer 
+// El primer parametro indica el archivo a aleer, el segundo parametro indica el formato de lectura y el tercer
 // parametro es una funcion callback que se va a ejecutar cuando se termine la lectura.
-fs.readFile("texto.txt", "utf-8", (error, contenido)=>{ // Se lee el archivo texto.txt.
-    
-    if(error){ // Si hay un error se muestra en consola.
-        console.error(error);
-    }
-    else{
-        console.log(contenido); // Si no hay error se muestra el contenido del archivo.
-    }
-    });
+readFile("texto.txt", "utf-8", (error, contenido) => {
+  // Se lee el archivo texto.txt.
+
+  if (error) {
+    // Si hay un error se muestra en consola.
+    console.error(error);
+  } else {
+    console.log(contenido); // Si no hay error se muestra el contenido del archivo.
+  }
+});

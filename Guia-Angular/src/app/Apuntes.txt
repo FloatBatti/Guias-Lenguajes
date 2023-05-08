@@ -1,9 +1,0 @@
-app es un componente que consta de diferentes elementos:
-
--Routing (rutas) que se encuentran en el archivo app-routing.module.ts, que se encarga de redireccionar a los diferentes 
-componentes de la aplicación.
--Hoja de estilo CSS
--HTML
--spec.ts para realizar pruebas unitarias (testeos)
--Un archivo TypeScript que contiene la lógica del componente
--Modulos de Angular que se importan en el archivo app.module.ts

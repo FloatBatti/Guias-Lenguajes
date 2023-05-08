@@ -13,6 +13,9 @@ public class ArchivoService {
 
         File file = new File(path);
 
+        // Se utiliza un try-catch para capturar la excepción que puede arrojar FileWriter en caso de que no se pueda
+        // crear el archivo. No se podria crear el archivo si no se tiene permisos de escritura en la carpeta donde
+        // se quiere crear el archivo.
         try {
 
             // FileWriter es una clase que permite escribir en un archivo, recibiendo un objeto File como parámetro.
@@ -43,8 +46,8 @@ public class ArchivoService {
 
             // BufferedWriter funciona igual que FileWriter, pero es más eficiente, ya que no escribe en el disco
             // cada vez que se invoca el método append, sino que va acumulando en el buffer las escrituras
-            // hasta que se llene. Una vez llenado el buffer se escribe en el disco.
-            // La efeciencia se nota cuando se tienen muchas escrituras en el archivo.
+            // hasta que se llene o cierre el archivo. Una vez llenado o cerrado, el buffer escribe en el disco.
+            // La eficiencia  se nota cuando se tienen muchas escrituras en el archivo.
             // Se le pasa como parámetro un objeto FileWriter.
 
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true));
@@ -92,9 +95,9 @@ public class ArchivoService {
         // FileReader es una clase que permite leer un archivo. Se le pasa como parámetro un objeto File.
         // Si el archivo no existe, lanza una excepción.
 
-        try {
+        // Si se pone la conexion dentro del try, se cierra automaticamente al salir del try.
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
 
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 
             // El método readLine() lee una línea del archivo y la retorna como String.
             // Si no hay más líneas para leer, retorna null.
@@ -106,11 +109,11 @@ public class ArchivoService {
                 builder.append(linea).append("\n");
             }
 
-            bufferedReader.close();
 
         }catch (IOException e) {
 
             throw new RuntimeException(e);
+
         }
 
         return builder.toString();

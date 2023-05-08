@@ -1,0 +1,22 @@
+.boton{
+
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 16px;
+    margin: 0 auto;
+    cursor: pointer;
+    border: 1px solid #28552a;
+    border-radius: 5px;
+}
+
+.titulo{
+
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 20px;
+}
