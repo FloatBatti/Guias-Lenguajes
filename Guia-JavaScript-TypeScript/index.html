@@ -12,18 +12,24 @@
     <!-- Todos los elementos del DOM son objetos, teniendo atributos y métodos -->
 
     <h1 id="cabecera" class="rojo">Ejemplo DOM con JavaScript</h1>
+    <h2 class="subtitulo">Soy un subtitulo modificable</h2>
+
     <p id="parrafo1" class="rojo">Saludos!</p>
     <p id="parrafo2">Otro parrafo</p>
 
     <button onclick="cambiarColor()">Color Párrafo</button>
-
+    <br/><br/>
+    
     <form id="formulario">
 
-      Nombre: <input type="text" name="nombre" value="Juan">
+      Nombre: <input class="inputName" type="text" name="nombre">
       <br/>
-      Apellido: <input type="text" name="apellido" value="Perez">
+      Apellido: <input type="number" name="apellido">
       <br/>
     </form>
+
+    <!-- Se puede indicar el formulario al que pertenece un input con el atributo form -->
+    <input type="submit" form="formulario">
 
     <!-- Con los () se manda a llamar una función de JavaScript -->
     <button onclick="mostrarValores()">Mostrar Valores</button>
@@ -32,43 +38,147 @@
 
     <img id="imagen" src="http://globalmentoring.com.mx/imagenes/javascript.png"> 
 
+    <br/><br/>
     <button onclick="cambiarFoto()">Cambiar Imagen</button>
+    <br/><br/>
 
+    <input id="inputPrueba">
+    <br/><br/>
+    <input id="inputFile">
+    <br/><br/>
+
+    <div class="contenedor"></div>
+    <br/><br/>
+
+    <div class="contNodos"><p>Nodo 1</p>
+      <p>Nodo 2</p>
+      <p>Nodo 3</p>
+    </div>
+
+    <!-- Los scripts deben ir abajo de los elementos HTML para poder utilizarlos -->
     <script>
+
+      // Métodos de selección de elementos:
     
-      // document es un objeto que representa el documento HTML.
-      // getElementById() devuelve un elemento HTML con el valor del atributo id.
-      // Con innerHTML se puede acceder al contenido de un elemento HTML.
-      // Si no utilizamos innerHTML, se accede al objeto HTML completo.
       let cabecera = document.getElementById("cabecera").innerHTML;
+      console.log(cabecera);
 
-      // Se guarda el objeto HTML en la variable cabecera, no el valor del elemento.
       let parrafo = document.getElementById("parrafo1");
+      console.log(parrafo);
 
-      // Se le asigna un nuevo valor al elemento HTML. Para esto se debe obtener el objeto y no el valor del elemento.
       parrafo.innerHTML = "Hola Mundo!";
 
-      // getElementsByTagName() devuelve una lista de elementos HTML con el nombre de la etiqueta.
       let parrafos = document.getElementsByTagName("p");
 
       console.log("Hay " + parrafos.length + " parrafos");
 
       parrafos[1].innerHTML = "Otro parrafo modificado";
 
-      // getElementsByClassName() devuelve una lista de elementos HTML con el nombre de la clase.
       let elementosRojos = document.getElementsByClassName("rojo");
 
       console.log("Hay " + elementosRojos.length + " elementos rojos");
 
-      // querySelector() devuelve el primer elemento HTML que coincida con el selector.
-      // Se pone el elemento HTML que se quiere obtener, seguido de un punto y el nombre del selector.
       let parrafosRojos = document.querySelectorAll("p.rojo");
 
       console.log("Hay " + parrafosRojos.length + " parrafos rojos");
 
+      //---------------------------------------------------------------------------------------------------------
+
+      // Métodos para definir, obtener, modificar y eliminar valores de atributos:
+
+      // Con document.forms se obtiene el formulario del documento (indicado por su id) en forma de array.
+      let form = document.forms["formulario"];
+
+      // Se puede acceder a los elementos del formulario por su nombre.
+      let inputApellido = form["apellido"]
+      
+      console.log(inputApellido.getAttribute("type"));
+
+      inputApellido.setAttribute("type", "text");
+
+      let subtitulo = document.querySelector(".subtitulo");
+
+      subtitulo.setAttribute("contenteditable", "true");
+
+      let inputPrueba = document.getElementById("inputPrueba");
+
+      inputPrueba.className = "prueba";
+
+      console.log(inputPrueba.className);
+
+      inputPrueba.type = "color";
+
+      inputPrueba.value = "#00AAFF";
+
+      let inputFile = document.getElementById("inputFile");
+
+      inputFile.type = "file";
+
+      inputFile.accept = "image/png"; // Solo se aceptan imagenes png.
+
+      //---------------------------------------------------------------------------------------------------------
+
+      // Métodos para crear elementos/nodos y agregarlos al DOM:
+
+      const contenedor = document.querySelector(".contenedor");
+
+      const item = document.createElement("LI");
+
+      const textItem = document.createTextNode("Item 1");
+
+      item.appendChild(textItem); // Se agrega el texto al elemento LI.
+
+      console.log(item);
+
+      contenedor.appendChild(item); // Se agrega el elemento LI al contenedor.
+
+      const fragmento = document.createDocumentFragment();
+
+      for(let i = 2; i <= 5; i++) {
+
+          const item2 = document.createElement("LI");
+
+          const textItem2 = document.createTextNode("Item " + i);
+
+          item2.appendChild(textItem2);
+
+          fragmento.appendChild(item2);
+      }
+
+      contenedor.appendChild(fragmento);
+
+      //---------------------------------------------------------------------------------------------------------
+
+      // Métodos para obtener childs, padres y siblings:
+
+      const contenedorNodos = document.querySelector(".contNodos");
+
+      const primerNodo = contenedorNodos.firstChild;
+
+      console.log(primerNodo);
+
+      const ultimoNodo = contenedorNodos.lastChild;
+
+      console.log(ultimoNodo); // Devuelve #text porque el ultimo nodo es un salto de linea.
+
+      console.log(contenedorNodos.lastElementChild); // Soluciona el problema anterior.
+
+      console.log(contenedorNodos.childNodes);
+
+      console.log(contenedorNodos.children); // Devuelve solo los elementos HTML.
+
+      console.log(ultimoNodo.parentNode);
+
+      console.log(ultimoNodo.parentElement); // Suele ser igual al anterior.
+
+      console.log(primerNodo.previousElementSibling); // Devuelve null porque no hay nodos hermanos anteriores.
+
+      console.log(primerNodo.nextElementSibling);
+
+      //---------------------------------------------------------------------------------------------------------
+
       function mostrarValores() {
 
-          // Con document.forms se obtiene el formulario del documento (indicado por su id) en forma de array.
           let formulario = document.forms["formulario"];
           let texto = "";
 
@@ -80,10 +190,10 @@
 
           document.getElementById("valoresForm").innerHTML = texto;
           
-          // Se puede acceder a los elementos del formulario por su nombre.
+          // Si no se pone .value, se obtiene el objeto HTML de tipo input.
           let nombre = formulario["nombre"].value;
           let apellido = formulario["apellido"].value;
-          // Si no se pone el value, se obtiene el objeto HTML de tipo input.
+          
       }
 
       function cambiarFoto() {
@@ -113,12 +223,10 @@
     </script>
 
     <br/>
-    <a href="otraPag.html" target="_blank">Otra página</a>
+    <a href="DOM-2.html" target="_blank">Otra página</a>
 
     <!-- DESCONMENTAR PARA PROBAR LOS ARCHIVOS JS -->
-    <script type="module" src="/src/MapFilterFind.js"></script>
-
-    <!-- Los scripts deben ir abajo de los elementos HTML para poder utilizarlos -->
+    <script type="module" src="/src/blabla.js"></script>
 
   </body>
 </html>

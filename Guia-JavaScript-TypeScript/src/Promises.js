@@ -32,7 +32,7 @@ promesa.catch(error => console.log(error));
 
 promesa.then(resolve => console.log(resolve)).catch(error => console.log(error));
 
-// Utilizando setTimeout con promesas:
+//! Utilizando setTimeout con promesas:
 
 let promesa2 = new Promise((resolve) => {
 
@@ -41,10 +41,11 @@ let promesa2 = new Promise((resolve) => {
     console.log("Fin de la promesa");
 });
 
-// Utilizando then porque no hay posibilidad de error.
+//! Utilizando then porque no hay posibilidad de error:
+
 promesa2.then(resolve => console.log(resolve));
 
-// Utilizando async con promesas:
+//! Utilizando async con promesas:
 
 // async indica que una función regresa una promesa. 
 async function miFuncionConPromesa(){
@@ -55,7 +56,7 @@ async function miFuncionConPromesa(){
 
 miFuncionConPromesa().then(valor => console.log(valor));
 
-// Utilizando async y await con promesas:
+//! Utilizando async y await con promesas:
 
 // await solo se puede usar dentro de una función declarada con async.
 

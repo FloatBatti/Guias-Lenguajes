@@ -37,7 +37,15 @@
             Palabra al azar: <input type="text" id="palabra">
             <br/>
             Numero al azar: <input type="number" id="numero">
+            <br/><br/>
         </form>
+
+        <button onclick="youtube()">Ir a yotube</button>
+        <br/><br/>
+
+        <button onclick="imprimir()">Imprimir la página</button>
+        <br/><br/>
+
     </body>
 
     <script>
@@ -55,7 +63,7 @@
 
         function entrar(){
 
-            alert("Has entrado a la otra página!");
+            alert("Has entrado a la guía de DOOM parte 2!");
             let texto= "";
 
             // navigator es un objeto que representa al navegador web.
@@ -126,5 +134,23 @@
             evento.target.style.background = "white";
         }, true);
 
+        //--------------------------------------------------------------------------------------------------
+
+        // Objeto window:
+
+
+        function youtube(){open("https://www.youtube.com/");}
+
+        function imprimir(){print();}
+
+        let respuesta = confirm("¿Se equivoco de página?");
+
+        if(respuesta){
+
+            open("https://pbs.twimg.com/media/FnyVLToWYAAVsqA.jpg");
+        }
+
     </script>
+
+
 </html>

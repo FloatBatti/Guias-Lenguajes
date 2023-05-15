@@ -35,7 +35,7 @@ console.log(add(2, 3)); // Imprime 5
 })("Hola desde una función self-invoking");
 
 
-// Funciones callback:
+//! Funciones callback:
 
 // Son funciones que se pasan como parámetros a otras funciones. Se utilizan mucho en JavaScript para ejecutar código asíncrono.
 // Es una llamada a una función (pasada como parámetro) que se ejecuta cuando se termina de ejecutar la función que la recibio.
@@ -67,7 +67,7 @@ sumar(2, 3, mostrarResultado);
 
 sumar(4,4, mostrarResultado);
 
-// Llamada asíncrona con setTimeout:
+//! Llamada asíncrona con setTimeout:
 
 // setTimeout es una función que recibe como parámetro una función y un tiempo expresado en milisegundos.
 // Un proceso sincrónico es aquel que se ejecuta en el mismo orden en el que se encuentra en el código. Asíncrono lo contrario.
@@ -78,7 +78,7 @@ setTimeout(() => console.log("Hola desde setTimeout") , 3000);
 // Se ejecuta primero el console.log del código principal y luego el de setTimeout.
 console.log("Hola desde el código principal");
 
-// Llamada asíncrona con setInterval:
+//! Llamada asíncrona con setInterval:
 
 // setInterval es una función que recibe como parámetro una función y un tiempo expresado en milisegundos.
 // Ejecuta la función cada cierto tiempo indicado en el segundo parámetro.

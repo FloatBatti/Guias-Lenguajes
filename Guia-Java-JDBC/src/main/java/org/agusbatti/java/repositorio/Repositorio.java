@@ -8,5 +8,4 @@ public interface Repositorio<T> {
     T buscarPorId(int id);
     void guardar(T t);
     void eliminar(int id);
-    void actualizar(T t);
 }

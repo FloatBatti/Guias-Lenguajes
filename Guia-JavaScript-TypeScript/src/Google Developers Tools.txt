@@ -1,0 +1,9 @@
+
+Con la pestaña Elements de la consola de desarrollador de Chrome, podemos ver el código HTML de la página web que 
+estamos visitando. Con Ctrl+F podemos buscar en el código HTML dentro de la pestaña. Tambien se pueden visualizar
+y mopdificar los estilos CSS de la página web.
+
+En la pestaña Sources podemos ver los archivos que componen la página web, como los archivos HTML, CSS, JavaScript,
+etc. Si se modifica algo de estos archivos, se puede guardar (con Ctrl+s) y se verá reflejado en la página web y
+en el código mismo. Posee una pestaña llamada Snippets donde se pueden guardar fragmentos de código para usarlos
+ 

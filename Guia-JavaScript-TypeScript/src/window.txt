@@ -1,0 +1,56 @@
+Window es un objeto global que representa la ventana del navegador, y que tiene como propiedades los 
+objetos document, location, history, screen y navigator. Hereda las propiedades y métodos de EventTarget,
+y por tanto puede usar addEventListener() para escuchar eventos. Eventos como load, unload y error se
+pueden escuchar en la ventana. También se puede usar removeEventListener() para dejar de escuchar eventos.
+EventTarget es una interfaz implementada por objetos que pueden recibir eventos y pueden escucharlos.
+
+Los métodos más utilizados de Window son (probarlos en la consola del navegador):
+
+open(): Abre una nueva ventana del navegador.
+close(): Cierra la ventana actual.
+closed: Devuelve true si la ventana está cerrada.
+stop(): Detiene la carga de la página.
+alert(): Muestra un cuadro de alerta con un mensaje y un botón de aceptar.
+print(): Imprime o guarda en formato pdf el contenido de la ventana actual.
+prompt(): Muestra un cuadro de diálogo con un mensaje que solicita al usuario que introduzca un texto.
+confirm(): Muestra un cuadro de diálogo con un mensaje y dos botones, Aceptar y Cancelar.
+
+screen: Proporciona información sobre la pantalla del dispositivo.
+screen.availHeight: Devuelve la altura de la pantalla del dispositivo en píxeles, sin contar la barra de tareas.
+screen.availWidth: Devuelve el ancho de la pantalla del dispositivo en píxeles, sin contar la barra de tareas.
+screen.height: Devuelve la altura de la pantalla del dispositivo en píxeles.
+screen.width: Devuelve el ancho de la pantalla del dispositivo en píxeles.
+screen.orientation: Devuelve la orientación de la pantalla del dispositivo.
+sreenleft: Devuelve la distancia en píxeles desde el borde izquierdo de la pantalla del pc hasta el borde izquierdo 
+del navegador. Es solo de lectura.
+screenTop: Devuelve la distancia en píxeles desde el borde superior de la pantalla del pc hasta el borde superior 
+del navegador. Es solo de lectura.
+screenX: Devuelve el numero de píxeles que el documento actual se ha desplazado horizontalmente.
+screenY: Devuelve el numero de píxeles que el documento actual se ha desplazado verticalmente.
+scroll(x,y): Desplaza el documento actual en el eje horizontal y vertical.
+
+resizeBy(x,y): Redimensiona la ventana actual en el eje horizontal y vertical.
+resizeTo(x,y): Redimensiona la ventana actual al tamaño especificado. La diferencia con resizeBy() es que
+resizeBy() redimensiona la ventana en relación a su tamaño actual, mientras que resizeTo() redimensiona la
+ventana en relación a su tamaño original.
+moveBy(x,y): Desplaza la ventana actual en el eje horizontal y vertical.
+moveTo(x,y): Desplaza la ventana actual a la posición especificada. La diferencia con moveBy() es que moveBy()
+desplaza la ventana en relación a su posición actual, mientras que moveTo() desplaza la ventana en relación a
+su posición original.
+
+
+Location:
+
+La interfaz Location representa la ubicación (URL) del objeto que lo invoca. Los objetos Window, Document,
+History y Location son heredados de la interfaz Location.
+
+location: Devuelve un objeto Location con información sobre la ubicación actual del documento.
+location.href: Devuelve la URL completa de la página actual (incluyendo el protocolo, el nombre del host,
+la ruta y el número del puerto).
+location.protocol: Devuelve el protocolo de la URL de la página actual.
+location.hostname: Devuelve el nombre del host de la URL de la página actual.
+location.pathname: Devuelve la ruta desde el dominio hasta el nombre del archivo. En el caso del localHost, desde
+el disco duro hasta el nombre del archivo.
+location.port: Devuelve el número del puerto de la URL de la página actual.
+location.assign(url): Carga el documento de la URL especificada.
+

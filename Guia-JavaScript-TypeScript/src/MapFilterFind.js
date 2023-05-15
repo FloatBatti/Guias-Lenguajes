@@ -3,7 +3,7 @@
 // Entre los corchetes se indica el nombre de la variable que se está importando.
 import saludosClientes, { clientes } from "./Clientes.js";
 
-// Uso del método map:
+//! Uso del método map:
 
 // Sevuelve un nuevo array con los elementos modificados, sin modificar el original.
 const nombres = clientes.map((cliente) => {
@@ -20,7 +20,7 @@ const totalItems = clientes.map((cliente) => {
 
 console.log(totalItems);
 
-// Uso del método find:
+//! Uso del método find:
 
 // find devuelve el primer elemento que cumpla con la condición indicada en la función.
 const cliente = clientes.find((cliente) => {
@@ -30,7 +30,7 @@ const cliente = clientes.find((cliente) => {
 
 console.log(cliente);
 
-// Uso del método filter:
+//! Uso del método filter:
 
 // filter devuelve un nuevo array con los elementos que cumplan con la condición indicada en la función predicate.
 const mayores = clientes.filter((cliente) => {

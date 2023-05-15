@@ -70,7 +70,7 @@ Persona.ciudad = "Buenos Aires"; // La clase hija Empleado tambien va a tener es
 
 console.log(Persona.MAX_OBJ); // Imprime 5.
 
-// Herencia:
+//! Herencia:
 
 class Empleado extends Persona { // Se crea una clase Empleado que hereda de Persona.
 

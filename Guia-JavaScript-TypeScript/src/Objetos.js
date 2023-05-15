@@ -74,7 +74,7 @@ console.log(objeto === objeto3); // Imprime false.
 console.log(objeto.company); // Imprime undefined. No existe el atributo company en el objeto. No hay error.
 console.log(objeto.company?.nombre); // Si no se escribe el signo de pregunta, se produce un error. Imprime undefined.
 
-// Desestructuración de objetos (destructuring):
+//! Desestructuración de objetos (destructuring):
 
 const { nombre, apellido } = objeto; // Se crea una variable nombre y apellido que apuntan a los atributos del objeto.
 
@@ -107,7 +107,7 @@ let auto = new Object(); // Se reserva espacio en memoria para un objeto de mane
 auto.marca = "Ford"; // Se crea el atributo marca y se le asigna el valor "Ford".
 auto.modelo = "Focus"; 
 
-// Recorrer las propiedades/atributos de un objeto:
+//! Recorrer las propiedades/atributos de un objeto:
 
 for(let atributo in auto) {
 
@@ -143,7 +143,7 @@ Persona.prototype.direccion = "Calle 123"; // Se agrega un atributo al prototipo
 
 console.log(persona1.direccion); // Imprime "Calle 123".
 
-// Uso del método call() para llamar a una función de un objeto, pero con los datos de otro objeto:
+//! Uso del método call() para llamar a una función de un objeto, pero con los datos de otro objeto:
 
 const persona2 = {
 
@@ -160,10 +160,9 @@ const persona3 = {
 
 // Se llama a la función saludar del objeto persona1, pero con los datos del objeto persona2.
 // Primero se pasa el objeto que se quiere utilizar, y luego los parámetros de la función.
-
 console.log(persona2.nombreCompleto.call(persona3, "Programador", "2236065897")); 
 
-// Uso del método apply(), similar al método call(), pero los parámetros se pasan en un arreglo:
+//! Uso del método apply(), similar al método call(), pero los parámetros se pasan en un arreglo:
 
 let arreglo = ["Programador", "2236065897"];
 

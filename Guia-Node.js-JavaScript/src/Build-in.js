@@ -37,3 +37,5 @@ readFile("texto.txt", "utf-8", (error, contenido) => {
     console.log(contenido); // Si no hay error se muestra el contenido del archivo.
   }
 });
+
+

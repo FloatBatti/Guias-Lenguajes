@@ -10,6 +10,9 @@ import java.util.List;
 
 public class ProductoRepo implements Repositorio<Producto>{
 
+    // En el caso de que no se utilice el patrón Singleton, se debe crear una conexión en cada método que la
+    // necesite, sin necesidad de crear el método getConnection().
+    // Dentro del try se crea la conexión, y al finalizar el bloque try, se cierra automáticamente.
     private Connection getConnection() throws SQLException {
         return Conexion.getInstance();
     }
@@ -20,6 +23,11 @@ public class ProductoRepo implements Repositorio<Producto>{
         List<Producto> productos = new ArrayList<>();
 
         // Al poner la conexión dentro del try, nos aseguramos que se cierre, sin tener que hacerlo manualmente.
+        // Se llama try-with-resources, que se encarga de cerrar los recursos automáticamente. Solo se pueden
+        // poner variables que implementen AutoCloseable y no cambien su valor dentro del try, es decir, que
+        // sean final o effectively final. Este último significa que no cambian su valor, aunque no sean final.
+        // Statement es una clase que se encarga de ejecutar sentencias SQL.
+        // ResultSet es una clase que se encarga de almacenar los resultados de una consulta.
         try(Statement statement = this.getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery("select p.*, c.nombre as categoria from productos p inner join categorias c on p.id_categoria = c.id_categoria")) {
 
@@ -32,6 +40,8 @@ public class ProductoRepo implements Repositorio<Producto>{
 
         }
         catch (SQLException e) {
+
+            // printStackTrace() imprime el stack trace de la excepción. Es útil para debuggear.
             e.printStackTrace();
         }
 
@@ -45,26 +55,28 @@ public class ProductoRepo implements Repositorio<Producto>{
 
         // Se utiliza PreparedStatement para evitar SQL Injection. En este caso no es necesario. A diferencia de
         // Statement, PreparedStatement se compila antes de ejecutarse, lo que permite ingresar parámetros.
+        // Al compilar la sentencia, se evita que se ejecute código malicioso porque no se puede modificar.
         try(PreparedStatement preparedStatement =
                     this.getConnection().prepareStatement("select p.*, c.nombre as categoria from productos p inner join categorias c on p.id_categoria = c.id_categoria WHERE id_producto = ?")) {
 
+            // Se usa setInt() para indicar que el parámetro es un entero. El primer parámetro es el índice del
+            // parámetro, y el segundo es el valor.
             preparedStatement.setInt(1, id);
 
             // Se usa executeQuery() para sentencias SELECT.
-            ResultSet resultSet = preparedStatement.executeQuery();
+            // No se puede usar el mismo try-with-resources porque se cambia el valor de preparedStatement al
+            // llamar el método setInt().
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
 
-            if(resultSet.next()) {
-                producto = crearProducto(resultSet);
+                if (resultSet.next()) {
+                    producto = crearProducto(resultSet);
+                }
             }
-
-            // Tengo que cerrar el ResultSet, ya que no lo estoy haciendo dentro del try.
-            resultSet.close();
 
         }
         catch (SQLException e) {
             e.printStackTrace();
         }
-
 
         return producto;
     }
@@ -76,30 +88,27 @@ public class ProductoRepo implements Repositorio<Producto>{
 
         // Si el id es 0, significa que es un nuevo producto, por lo que se usa INSERT. Si no, se usa UPDATE.
         if (producto.getId() == 0) {
-            sql = "INSERT INTO productos (nombre, precio, fecha_registro) VALUES (?, ?, ?)";
+            sql = "INSERT INTO productos ( id_categoria, nombre, precio, fecha_registro) VALUES (?, ?, ?, ?)";
         } else {
-            sql = "UPDATE productos SET nombre = ?, precio = ?, fecha_registro = ? WHERE id_producto = ?";
+            sql = "UPDATE productos SET id_categoria= ? ,nombre = ?, precio = ?  WHERE id_producto = ?";
         }
 
         try(PreparedStatement preparedStatement = this.getConnection().prepareStatement(sql)) {
 
-            preparedStatement.setString(1, producto.getNombre());
-            preparedStatement.setDouble(2, producto.getPrecio());
+            preparedStatement.setInt(1, producto.getCategoria().getId());
+            preparedStatement.setString(2, producto.getNombre());
+            preparedStatement.setDouble(3, producto.getPrecio());
+
             // Se usa el Date de java.sql, no el de java.util.
             // Se usa getTime() para obtener el valor en milisegundos.
 
-            // Si el id es distinto de 0, significa que es un producto existente, por lo que le tengo que
-            // pasar el mismo id que tenía. No le agrego la fecha de registro, ya que no se puede modificar.
-            if(producto.getId() != 0){
+            // Si el id es 0, es nuevo, entonces se debe pasar la fecha de registro.
+            if(producto.getId() == 0)
+                preparedStatement.setDate(4, new Date(producto.getFechaRegistro().getTime()));
 
+            else    // Si el id no es 0, es porque ya existe, entonces se debe que pasar
+                    // el id que ya tiene.
                 preparedStatement.setInt(4, producto.getId());
-
-            }else{  // Si el id es 0, significa que es un nuevo producto, por lo que no le tengo que pasar
-                    // el id, ya que se genera automáticamente.
-
-                preparedStatement.setDate(3, new Date(producto.getFechaRegistro().getTime()));
-            }
-
 
             // Se usa executeUpdate() para sentencias INSERT, UPDATE y DELETE.
             preparedStatement.executeUpdate();
@@ -122,13 +131,8 @@ public class ProductoRepo implements Repositorio<Producto>{
 
         }
         catch (SQLException e){
-
+            e.printStackTrace();
         }
-    }
-
-    @Override
-    public void actualizar(Producto producto) {
-
     }
 
     private static Producto crearProducto(ResultSet resultSet) throws SQLException {
