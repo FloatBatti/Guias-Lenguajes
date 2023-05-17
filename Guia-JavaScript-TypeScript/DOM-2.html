@@ -46,6 +46,16 @@
         <button onclick="imprimir()">Imprimir la página</button>
         <br/><br/>
 
+        <input type="text" id="texto" placeholder="Ingrese una tecla y mire la consola">
+
+        <div class="copia"></div>
+
+        <div class="copia"></div>
+
+        <div class="copia"></div>
+
+        <h3>Lo que estoy seleccionando</h3>
+        <h4 class="seleccion" style="color:brown"></h4>
     </body>
 
     <script>
@@ -62,6 +72,7 @@
         }
 
         function entrar(){
+            /*
 
             alert("Has entrado a la guía de DOOM parte 2!");
             let texto= "";
@@ -78,6 +89,7 @@
             }
 
             document.getElementById("cookies").innerHTML = texto;
+            */
         }
 
         function convertir(elemento){
@@ -134,6 +146,50 @@
             evento.target.style.background = "white";
         }, true);
 
+
+        let $input = document.getElementById("texto");
+
+        
+         // onkeyup es un evento que se ejecuta cuando se suelta una tecla.
+         $input.addEventListener("keyup", (evento)=>{
+
+            let $copias = document.querySelectorAll(".copia");
+
+            let expresion = new RegExp("^[a-zA-Z0-9 ]$");
+
+            if(expresion.test(evento.key)){
+
+                $copias.forEach((elemento)=>{
+
+                    elemento.innerHTML += evento.key;
+                });
+
+            }
+
+            if(evento.keyCode == 8){
+                
+                $copias.forEach((elemento)=>{
+
+                    elemento.innerHTML = $input.value;
+            
+                });
+            }
+        });
+
+        $input.addEventListener("select", (evento)=>{
+
+            let start = evento.target.selectionStart; // selectionStart es un atributo que devuelve la posición del inicio 
+            //de la selección.
+            let end = evento.target.selectionEnd; // selectionEnd es un atributo que devuelve la posición del final de la 
+            //selección.
+            let texto = $input.value;
+
+            document.querySelector(".seleccion").innerHTML = texto.substring(start, end);
+    
+        });
+
+    
+
         //--------------------------------------------------------------------------------------------------
 
         // Objeto window:
@@ -143,12 +199,18 @@
 
         function imprimir(){print();}
 
+        /*
         let respuesta = confirm("¿Se equivoco de página?");
 
         if(respuesta){
 
             open("https://pbs.twimg.com/media/FnyVLToWYAAVsqA.jpg");
         }
+        */
+
+        //--------------------------------------------------------------------------------------------------
+
+
 
     </script>
 

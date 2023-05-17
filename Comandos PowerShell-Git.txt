@@ -1,0 +1,146 @@
+ls
+cd
+cd ..
+mkdir
+code .
+
+git config --global user.name "name"
+git config --global user.email "email"
+git init
+git branch -m main
+git status
+git add . (se lleva todo al stage, donde se prepara para el commit)
+git config --global init.defaultBranch <name>
+git commit -m (m de message) "<Mensaje del commit>"
+git log (para visualizar el hashcode del commit, el autor y la fecha del commit)
+* Modifico el archivo *
+git reset
+git checkout <file>
+git log --graph 
+git log --graph --pretty=oneline
+git log --graph --decorate --all --oneline
+git config --global alias.<nombre alias> "<comando sin el git>"
+New-Item -ItemType File .gitignore
+Set-Content -Path .\.gitignore -Value "Ignorenme.txt"
+git diff
+git reset (puedo cancelar un stage)
+git reset --hard <id del commit a donde se quiere volver> (se borran los commits pero no de manera permanente ya que con un checkout puedo pararme en el commit eliminado. Para restaurarlo uso el mismo comando reset pero en el commit eliminado, estando checkout en el main)
+git reflog (historial completo de interacciones)
+git tag <nombre del tag> (nombre significativo de un commit)
+git tag (muestra los tags)
+git checkout tags/<nombre del tag>
+git branch <nombre rama>
+git branch (lista de ramas)
+git switch rama1
+git merge <rama que posee los cambios que quiero traer a donde estoy posicionado>
+git diff <rama a comparar>
+git stash (guarda los cambios para poder movernos hacia otra rama sin tener que hacer un commit)
+git stash list
+git stash apply (vuelca los cambios en la rama y no los elimina del stash)
+git stash pop
+git stash drop
+git branch -d (borrar rama porque ya cumplió su funcion. Los commits no son borrados)
+
+Hacer un commit es como sacarle una foto al proyecto, una snapshot. Las branchs apuntan a un commit que posee un identificador único. La copia de todas las fotografias se almacenan en la pc.
+
+Si hacemos un checkout hacia algún commit y tenemos algún cambio sin tratar, git nos da aviso de un error.
+
+git remote add origin <usuario>
+git push origin -u <rama del remoto> (Si en local estoy en el main, la rama remota va a ser el main)
+git fetch (descarga el historial de cambios sin descaragar los cambios)
+git pull <remote> <branch> (descarga el historial y los cambios)
+
+git push --delete origin <nombre-de-la-rama> (luego de borrar la rama de manera local)
+
+Fork copia/clona el repositorio de otro usuaria al nuestro (se puede ir sincronizando con el original y hacer pull request)
+
+Pull request (Enviar las modificaciones a otra rama o repositorio)
+
+git cherry-pick <id del commit> (trae un commit de otra rama a la rama donde estoy posicionado)
+
+git rebase <rama que posee los cambios que quiero traer a donde estoy posicionado> (todo la rama desde donde se ejecuta el comando se ubica
+delante del ultimo commit de la rama a rebasar)
+
+git rebase --abort (cancela el rebase)
+
+
+/-----------------------------------------
+
+Sintaxis del lenguaje bash:
+
+New-Item -ItemType File nombre_archivo.txt
+Set-Content -Path nombre_archivo.txt -Value "Este es el contenido del archivo"
+Add-Content -Path nombre_archivo.txt -Value "Contenido nuevo"
+Get-Content -Path nombre_archivo.txt
+Get-Content -Path nombre_archivo.txt -ReadCount 0
+Remove-Item <ruta archivo>
+Salto de linea:  `n (alt + 96)
+
+/-----------------------------------------
+
+Pasos para mejorar powershell:
+
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+
+Install Windows Terminal (store)
+
+Install Power Shell (store)
+
+https://www.nerdfonts.com/
+
+winget install JanDeDobbeleer.OhMyPosh -s winget
+
+Install-Module -Name Terminal-Icons -Repository PSGallery -Force
+
+https://learn.microsoft.com/es-es/windows/terminal/tutorials/custom-prompt-setup
+
+Install oh my posh (store) y visitar https://ohmyposh.dev/
+
+Install-Module PSReadLine -Force
+
+-Get-PSReadlineOption | select -expand historysavepath (para borrar todo el historial de comandos de manera permanente)
+
+"commandline": "powershell.exe -NoLogo", (en el .json, en la parte donde el name es powershell)
+
+https://github.com/ryanoasis/nerd-fonts/releases (actualizaciones de fuentes)
+
+/----------------------------------------
+
+notepad $PROFILE
+
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\clean-detailed.omp.json" | Invoke-Expression
+Import-Module -Name Terminal-Icons
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -EditMode Windows
+
+
+/--------------------------
+
+Lab: 
+
+Asis, Marcelo Alejandro
+Bidegain, Lisandro Javier
+Cardinali, Agostina
+Dominguez, Ignacio Roman
+Doussine, Santiago
+Fernandez, Lucas
+Fraccarolli, Lucas Agustin
+Gomez, Agustin Edgardo
+Luengo, Ignacio Joel
+Morales, Juan Cruz
+Pecar, Milagros
+Suarez Hans, Leonardo
+
+Prog:
+
+Figliuolo, Matias Agustin
+Juarez, Maria Soledad
+Lovece, Ruth
+Rodriguez Consoli, Gastón Jorge
+Rondinara, Vanesa Mabel
+
+Los dos:
+Caparros Murias, Ezequiel Simon
+Gauna, Nicolas Agustin
+Gonzalez, Santiago Raul

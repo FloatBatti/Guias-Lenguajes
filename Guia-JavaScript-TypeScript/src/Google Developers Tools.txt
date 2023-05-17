@@ -6,4 +6,5 @@ y mopdificar los estilos CSS de la página web.
 En la pestaña Sources podemos ver los archivos que componen la página web, como los archivos HTML, CSS, JavaScript,
 etc. Si se modifica algo de estos archivos, se puede guardar (con Ctrl+s) y se verá reflejado en la página web y
 en el código mismo. Posee una pestaña llamada Snippets donde se pueden guardar fragmentos de código para usarlos
+después.    
  

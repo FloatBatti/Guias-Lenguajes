@@ -83,14 +83,22 @@ console.log("Hola desde el código principal");
 // setInterval es una función que recibe como parámetro una función y un tiempo expresado en milisegundos.
 // Ejecuta la función cada cierto tiempo indicado en el segundo parámetro.
 
+let contador = 0;
+
 let reloj = () => {
 
     let fecha = new Date();
 
     console.log(`${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`);
+
+    contador++;
+
+    if(contador == 5) {
+
+        clearInterval(intervalo); // Detiene la ejecución de la función setInterval.
+    }
 }
 
-// setInterval(reloj, 1000); Se comenta porque sino se ejecuta indefinidamente.
 
 
 
