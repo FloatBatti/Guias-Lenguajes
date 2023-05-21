@@ -117,30 +117,3 @@ Set-PSReadLineOption -EditMode Windows
 
 /--------------------------
 
-Lab: 
-
-Asis, Marcelo Alejandro
-Bidegain, Lisandro Javier
-Cardinali, Agostina
-Dominguez, Ignacio Roman
-Doussine, Santiago
-Fernandez, Lucas
-Fraccarolli, Lucas Agustin
-Gomez, Agustin Edgardo
-Luengo, Ignacio Joel
-Morales, Juan Cruz
-Pecar, Milagros
-Suarez Hans, Leonardo
-
-Prog:
-
-Figliuolo, Matias Agustin
-Juarez, Maria Soledad
-Lovece, Ruth
-Rodriguez Consoli, Gastón Jorge
-Rondinara, Vanesa Mabel
-
-Los dos:
-Caparros Murias, Ezequiel Simon
-Gauna, Nicolas Agustin
-Gonzalez, Santiago Raul
