@@ -1,0 +1,62 @@
+Aquí hay una descripción general del flujo típico de trabajo al utilizar Tomcat:
+
+Desarrollas tu aplicación web Java utilizando tecnologías como servlets, JSP y Java EE.
+
+Empaquetas tu aplicación en un archivo WAR (Web Application Archive) que contiene todos los componentes y recursos necesarios.
+
+Instalas y configuras Tomcat en tu servidor. Puedes descargar Tomcat desde el sitio web oficial de Apache y seguir las instrucciones de instalación.
+
+Despliegas tu archivo WAR en Tomcat. Esto implica copiar el archivo WAR en el directorio de despliegue de Tomcat, que normalmente se llama "webapps".
+
+Inicias Tomcat y tu aplicación web se desplegará automáticamente. Tomcat se encargará de ejecutar tus servlets y JSP, y estará listo para recibir solicitudes de los clientes.
+
+WAR (Web Application Archive) es un formato de archivo utilizado para empaquetar y distribuir aplicaciones web Java. Un archivo WAR contiene todos los recursos necesarios para ejecutar una aplicación web, incluyendo clases Java, archivos de configuración, páginas JSP, archivos estáticos (como imágenes, hojas de estilo y scripts) y cualquier otra dependencia requerida.
+
+Cuando desarrollas una aplicación web Java, normalmente trabajas con una estructura de directorios y archivos que conforman tu proyecto. Sin embargo, para distribuir y desplegar tu aplicación en un servidor web como Tomcat, necesitas empaquetarla en un archivo WAR.
+
+El archivo WAR es simplemente un archivo ZIP con una estructura específica. Dentro del archivo WAR, encontrarás diferentes directorios y archivos que organizan los recursos de tu aplicación de la siguiente manera:
+
+WEB-INF: Este directorio contiene archivos y directorios relacionados con la configuración interna de tu aplicación web. Algunos de los elementos clave en este directorio son:
+
+web.xml: Es un archivo de configuración en formato XML que describe la estructura de tu aplicación web, define servlets, mapea URLs a servlets, configura filtros, etc.
+
+classes: Este directorio almacena las clases Java compiladas y otros recursos específicos de tu aplicación web.
+
+lib: Aquí se encuentran las bibliotecas (archivos JAR) utilizadas por tu aplicación web.
+
+META-INF: Este directorio almacena metadatos y archivos de configuración adicionales para tu aplicación web. Uno de los archivos más comunes es el archivo "MANIFEST.MF", que contiene información sobre la aplicación.
+
+Otros archivos y directorios: Además de los directorios mencionados anteriormente, tu archivo WAR también puede contener otros recursos y archivos específicos de tu aplicación, como archivos JSP, imágenes, hojas de estilo, scripts, etc.
+
+Una vez que hayas empaquetado tu aplicación web en un archivo WAR, puedes desplegarlo en un servidor web compatible, como Tomcat. El servidor web extraerá el contenido del archivo WAR y lo configurará para que tu aplicación esté lista para ser ejecutada.
+
+En resumen, un archivo WAR es un formato de archivo utilizado para empaquetar y distribuir aplicaciones web Java. Contiene todos los recursos necesarios para ejecutar la aplicación, incluyendo clases Java, archivos de configuración, páginas JSP y otros archivos estáticos. El archivo WAR se despliega en un servidor web, que extrae su contenido y lo configura para que la aplicación web sea accesible a través del servidor.
+
+-----
+
+En un archivo JSP, la expresión ${pageContext.request.contextPath} se utiliza comúnmente en el atributo action de un formulario HTML. Esta expresión se utiliza para obtener la ruta base de la aplicación web en el servidor.
+
+Cuando una aplicación web se despliega en un servidor, generalmente se asigna a un contexto o nombre de aplicación específico. Por ejemplo, si tu aplicación se llama "miaplicacion", se podría acceder a ella a través de una URL como http://localhost:8080/miaplicacion. En este caso, "miaplicacion" sería el contexto o nombre de la aplicación.
+
+La expresión ${pageContext.request.contextPath} se utiliza para obtener ese contexto o nombre de aplicación de manera dinámica. Al utilizar esta expresión en el atributo action de un formulario, aseguras que la acción del formulario apunte correctamente a la ruta base de la aplicación, sin importar el contexto o el nombre de la aplicación.
+
+La expresión ${pageContext.request.contextPath} se expandirá en la ruta base de la aplicación. Supongamos que el contexto o nombre de la aplicación es "/miaplicacion". La acción del formulario se convertiría en "/miaplicacion/miServlet", lo que asegura que el formulario se envíe a la ruta correcta de tu servlet.
+
+En resumen, ${pageContext.request.contextPath} se utiliza en el atributo action de un formulario en un archivo JSP para obtener dinámicamente la ruta base de la aplicación web en el servidor. Esto garantiza que la acción del formulario apunte correctamente a la ruta adecuada, independientemente del contexto o nombre de la aplicación.
+
+----------
+Las cabeceras de solicitud (request headers) y cabeceras de respuesta (response headers) son componentes fundamentales del protocolo HTTP que permiten la comunicación entre un cliente y un servidor web.
+
+Cabeceras de solicitud (request headers): Son enviadas por el cliente al realizar una solicitud HTTP al servidor. Estas cabeceras proporcionan información adicional sobre la solicitud que el cliente está realizando. Algunos ejemplos comunes de cabeceras de solicitud son:
+
+User-Agent: Identifica el software y la versión utilizada por el cliente para realizar la solicitud.
+Content-Type: Especifica el tipo de contenido del cuerpo de la solicitud, como "application/json" o "application/x-www-form-urlencoded".
+Authorization: Se utiliza para enviar credenciales de autenticación al servidor, como tokens de acceso o nombres de usuario y contraseñas encriptadas.
+Cabeceras de respuesta (response headers): Son enviadas por el servidor como parte de la respuesta a la solicitud realizada por el cliente. Estas cabeceras proporcionan información adicional sobre la respuesta que el servidor está enviando al cliente. Algunos ejemplos comunes de cabeceras de respuesta son:
+
+Content-Type: Indica el tipo de contenido de la respuesta, como "text/html" para una página HTML o "application/json" para datos en formato JSON.
+Set-Cookie: Se utiliza para enviar cookies al cliente, que pueden ser almacenadas y utilizadas para mantener el estado de la sesión.
+Cache-Control: Define la política de almacenamiento en caché que debe seguir el cliente o los servidores intermedios.
+Tanto las cabeceras de solicitud como las cabeceras de respuesta son utilizadas por el cliente y el servidor para comunicarse entre sí y transmitir información adicional necesaria para el procesamiento de la solicitud y la respuesta. Las cabeceras pueden contener metadatos, instrucciones de control de caché, información de autenticación, información sobre el contenido y más.
+
+En un servlet de Java, puedes acceder a las cabeceras de solicitud y de respuesta utilizando los objetos HttpServletRequest y HttpServletResponse, respectivamente. Puedes obtener, establecer y manipular las cabeceras de acuerdo con tus necesidades de procesamiento de la solicitud o respuesta.
