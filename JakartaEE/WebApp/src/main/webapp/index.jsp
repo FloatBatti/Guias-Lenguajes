@@ -10,9 +10,10 @@ Map<String, String> errores = (Map<String, String>) request.getAttribute("errors
 <head>
     <meta charset="UTF-8">
     <title>Formulario de usuarios</title>
+    <link rel="stylesheet" type="text/css" href="styles/landing.css">
 </head>
 <body>
-<h3>Formulario de usuarios</h3>
+<h3 class="color-red">Formulario de usuarios</h3>
 
 <%
     if (errores != null && errores.size() > 0) {
@@ -137,5 +138,7 @@ Map<String, String> errores = (Map<String, String>) request.getAttribute("errors
 <a href="${pageContext.request.contextPath}/cabeceras-http-request">Ir a la página de cabeceras Request</a>
 <br>
 <a href="${pageContext.request.contextPath}/cabeceras-http-request">Ir a la página de cabeceras Response</a>
+
+<a href="${pageContext.request.contextPath}/product-servlet">Ir a la página de productos</a>
 </body>
 </html>

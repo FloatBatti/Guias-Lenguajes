@@ -18,6 +18,7 @@ public class HelloServlet extends HttpServlet {
 
     // El método doPost() se utiliza para manejar las solicitudes POST.
     // HttpServletRequest y HttpServletResponse son objetos de solicitud y respuesta respectivamente.
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String username = request.getParameter("username");
@@ -102,6 +103,10 @@ public class HelloServlet extends HttpServlet {
 
     }
 
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response){
+
+    }
     public void destroy() {
     }
 }

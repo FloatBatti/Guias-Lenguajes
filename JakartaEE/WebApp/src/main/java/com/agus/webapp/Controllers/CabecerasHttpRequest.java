@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 @WebServlet(name = "cabecerasHttpRequest", value = "/cabeceras-http-request")
 public class CabecerasHttpRequest extends HttpServlet {
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response){
 
         String method = request.getMethod(); // Devuelve el método HTTP utilizado para esta solicitud.
