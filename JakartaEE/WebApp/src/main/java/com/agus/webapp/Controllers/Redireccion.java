@@ -12,7 +12,10 @@ public class Redireccion extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
         try {
-            response.sendRedirect("index.jsp"); // Redirecciona a index.jsp, redirecciona a la pagina principal, incluyendo el request y el response
+            response.sendRedirect("index.jsp"); // Redirecciona a index.jsp. Se usa response en lugar de
+            // request porque se quiere redireccionar, no obtener.
+            // La diferencia entre sendRedirect() y forward() es que sendRedirect() envía una nueva solicitud al
+            // servidor, mientras que forward() reenvía la solicitud actual al recurso especificado.
         } catch (Exception e) {
             System.out.println("Error al redireccionar: " + e);
         }

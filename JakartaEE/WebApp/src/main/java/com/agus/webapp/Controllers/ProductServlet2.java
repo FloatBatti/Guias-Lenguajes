@@ -11,10 +11,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "productServlet", value = "/product-servlet")
-public class ProductServlet extends HttpServlet {
-
-
+@WebServlet(name = "productServlet2", value = "/product-servlet-2")
+public class ProductServlet2 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response){
 
@@ -29,7 +27,7 @@ public class ProductServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Listado de productos</title>");
+            out.println("<title>Listado de productos con Session</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Listado de productos</h1>");
@@ -51,7 +49,7 @@ public class ProductServlet extends HttpServlet {
             });
 
             out.println("</table>");
-            out.println("<a href=\"logout-servlet\">Cerrar sesión</a>");
+            out.println("<a href=\"logout-servlet-2\">Cerrar sesión</a>");
             out.println("<a href=\"/redireccion\">Volver</a>");
             out.println("</body>");
 

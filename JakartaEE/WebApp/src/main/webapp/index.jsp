@@ -138,7 +138,12 @@ Map<String, String> errores = (Map<String, String>) request.getAttribute("errors
 <a href="${pageContext.request.contextPath}/cabeceras-http-request">Ir a la página de cabeceras Request</a>
 <br>
 <a href="${pageContext.request.contextPath}/cabeceras-http-request">Ir a la página de cabeceras Response</a>
-
-<a href="${pageContext.request.contextPath}/product-servlet">Ir a la página de productos</a>
+<br><br>
+<a href="${pageContext.request.contextPath}/login-servlet">Ver productos favoritos con Cookies</a>
+<br>
+<a href="${pageContext.request.contextPath}/login-session-servlet">Ver productos favoritos con Session</a>
+<br>
+<h2><a href="login.jsp">Ir al Login con Cookies</a></h2>
+<h2><a href="login-session.jsp">Ir al Login con Session</a></h2>
 </body>
 </html>
