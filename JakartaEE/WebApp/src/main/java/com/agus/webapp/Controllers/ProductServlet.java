@@ -14,7 +14,6 @@ import java.util.List;
 @WebServlet(name = "productServlet", value = "/product-servlet")
 public class ProductServlet extends HttpServlet {
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response){
 
@@ -52,8 +51,9 @@ public class ProductServlet extends HttpServlet {
 
             out.println("</table>");
             out.println("<a href=\"logout-servlet\">Cerrar sesión</a>");
-            out.println("<a href=\"/redireccion\">Volver</a>");
+            out.println("<a href=\"redireccion\">Volver</a>");
             out.println("</body>");
+            out.println("</html>");
 
         } catch (IOException e) {
             throw new RuntimeException(e);

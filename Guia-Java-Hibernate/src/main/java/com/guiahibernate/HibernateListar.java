@@ -12,7 +12,7 @@ public class HibernateListar {
 
     public static void main(String[] args) {
 
-        EntityManager entityManager = JpaUtil.getEntityManagerFactory().createEntityManager();
+        EntityManager entityManager = JpaUtil.getEntityManager();
 
         // En el primer parámetro se indica la consulta a realizar, en este caso se busca un objeto c de tipo Cliente.
         // Se está utilizando HQL (Hibernate Query Language), que es un lenguaje de consultas orientado a objetos.

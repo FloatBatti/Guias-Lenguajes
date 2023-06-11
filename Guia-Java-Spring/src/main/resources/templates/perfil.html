@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titulo}"></title>
+</head>
+<body>
+<h1 th:text="${titulo}"></h1>
+<!-- Por debajo ejecuta el método getNombre() de la clase Usuario -->
+<span th:text="${usuario.nombre}"></span>
+<span th:text="${usuario.apellido}"></span>
+
+<!-- th:if es una etiqueta de Thymeleaf que permite mostrar el valor del atributo en la página
+si se cumple la condición. Si no se cumple, no se muestra nada -->
+<span th:if="${usuario.email}"></span><br>
+<span th:if="${usuario.email == null}">El usuario no posee email</span>
+</body>
+</html>

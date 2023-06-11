@@ -2,6 +2,8 @@ package com.guiahibernate.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity // Esta anotación es para indicar que esta clase es una entidad. Una entidad es una clase que se va a mapear
 // a una tabla en la base de datos.
 @Table(name = "clientes") // Indica el nombre de la tabla en la base de datos.
@@ -16,6 +18,34 @@ public class Cliente {
     @Column(name = "forma_pago") // Indica el nombre de la columna en la base de datos porque el nombre del atributo
     // no es igual al nombre de la columna en la base de datos.
     private String formaPago;
+
+    @Embedded // Indica que se va a utilizar una clase embebida en esta clase.
+    // Al momento de instanciar esta clase, se van a integrar los atributos de la clase embebida en esta clase.
+    private Auditoria auditoria = new Auditoria();
+
+    // region Constructores
+    public Cliente() {
+    }
+
+    public Cliente(String nombre, String apellido, String formaPago) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.formaPago = formaPago;
+    }
+
+    public Cliente(int id, String nombre, String apellido, String formaPago) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.formaPago = formaPago;
+    }
+
+    public Cliente(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
+    // endregion
 
     // region Getters y setters
     public int getId() {
@@ -59,6 +89,10 @@ public class Cliente {
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", formaPago='" + formaPago + '\'' +
+                // En los objetos o registros que fueron creados antes de agregar el atributo auditoria, el valor de
+                // este atributo va a ser null.
+                ", creadoEn=" + (auditoria != null ? auditoria.getCreadoEn() : null) + '\'' +
+                ", editadoEn=" + (auditoria != null ? auditoria.getEditadoEn() : null) + '\'' +
                 '}';
     }
 }

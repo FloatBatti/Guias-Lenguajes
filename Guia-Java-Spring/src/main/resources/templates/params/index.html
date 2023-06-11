@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enviar parámetros por GET</title>
+</head>
+<body>
+<ul>
+  <li>
+    <!-- El @{} es para indicar que es una url relativa -->
+    <a th:href="@{/params/string(texto= 'Hola soy un texto')}">Ir a /params/string?texto=Hola soy un texto</a>
+  </li>
+  <li>
+    <a th:href="@{/params/string(texto= 'Hola soy otro texto')}">Ir a /params/string?texto=Hola soy otro texto</a>
+  </li>
+  <li>
+    <a th:href="@{/params/mix-params(texto= 'Hola con un query param mixto', numero=7)}">Query Param mixto</a>
+  </li>
+  <li>
+    <a th:href="@{/params/httpservlet(texto= 'Hola que tal con servlet request', numero=7)}">Query Param con HttpServletRequest</a>
+  </li>
+</ul>
+</body>
+</html>

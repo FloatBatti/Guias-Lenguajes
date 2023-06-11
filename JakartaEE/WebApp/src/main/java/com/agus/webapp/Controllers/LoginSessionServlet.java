@@ -2,11 +2,14 @@ package com.agus.webapp.Controllers;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Optional;
+
 
 @WebServlet(name = "loginSessionServlet", value = "/login-session-servlet")
 public class LoginSessionServlet extends HttpServlet {
@@ -20,7 +23,7 @@ public class LoginSessionServlet extends HttpServlet {
         if(username != null){
 
             try {
-                resp.sendRedirect("product-servlet-2");
+                resp.sendRedirect("product-session-servlet");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -40,7 +43,7 @@ public class LoginSessionServlet extends HttpServlet {
             req.getSession().setAttribute("username", username);
 
             try {
-                resp.sendRedirect("product-servlet-2");
+                resp.sendRedirect("product-session-servlet");
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -4,11 +4,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Optional;
 
-@WebServlet(name = "logoutServlet2", value = "/logout-servlet-2")
-public class LogoutServlet2 extends HttpServlet {
+@WebServlet(name = "logoutSessionServlet", value = "/logout-session-servlet")
+public class LogoutSessionServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp){

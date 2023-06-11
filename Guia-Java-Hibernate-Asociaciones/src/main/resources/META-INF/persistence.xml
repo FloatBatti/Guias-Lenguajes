@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  La etiqueta persistence indica que es un archivo de configuración de persistencia -->
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
+  <!-- transaction-type indica que tipo de transacción se va a utilizar -->
+  <!-- Si la transacción no es local se debe utilizar JTA -->
+  <persistence-unit name="guiaHibernate" transaction-type="RESOURCE_LOCAL">
+    <!--  La etiqueta provider indica que proveedor de persistencia se va a utilizar -->
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <!--  La etiqueta class indica que clase se va a utilizar para la persistencia -->
+    <class>com.guiahibernate.entity.Cliente</class>
+    <class>com.guiahibernate.entity.Factura</class>
+    <class>com.guiahibernate.entity.Direccion</class>
+    <!--  La etiqueta exclude-unlisted-classes indica que clases no se van a utilizar para la persistencia -->
+    <!--  Si se coloca true se van a utilizar todas las clases que utilicen la anotación @Entity de class -->
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <!--  La etiqueta properties indica que propiedades se van a utilizar para la persistencia -->
+    <properties>
+      <!-- Los primeros cuatro campos son los datos de la base de datos -->
+      <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/asociaciones"/>
+      <property name="jakarta.persistence.jdbc.user" value="root"/>
+      <property name="jakarta.persistence.jdbc.password" value="Socrates426850"/>
+      <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <!-- El dialecto es la forma en que se va a comunicar con la base de datos -->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+      <!-- La propiedad show_sql indica que se va a mostrar el sql que se está ejecutando en consola -->
+      <property name="hibernate.show_sql" value="true"/>
+      <!--
+        "drop-and-create", significa que se desea eliminar y recrear el esquema de la base de datos cada vez que la
+        aplicación se inicia. Esto implica que se eliminarán todas las tablas y datos existentes en la base de datos
+        y se crearán nuevamente según las definiciones proporcionadas por las entidades de persistencia en la
+        aplicación. No se recomienda utilizar esta opción en un entorno de producción, ya que eliminará todos los
+        datos existentes en la base de datos.
+       -->
+      <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+    </properties>
+
+  </persistence-unit>
+</persistence>
